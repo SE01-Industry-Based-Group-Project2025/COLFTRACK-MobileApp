@@ -25,6 +25,49 @@ export default function RegisterScreen() {
       Alert.alert('Validation Error', 'Please fill in all fields.');
       return;
     }
+      // NIC validation (9 digits followed by 'V' or 'X', or 12 digits)
+    const nicRegex = /^(\d{9}[VX]|\d{12})$/i;
+    if (!nicRegex.test(nic)) {
+      Alert.alert('Validation Error', 'Please enter a valid NIC number (e.g., 123456789V or 123456789012).');
+      return;
+    }
+
+    // Contact number validation (10 digits)
+    const contactRegex = /^\d{10}$/;
+    if (!contactRegex.test(contact)) {
+      Alert.alert('Validation Error', 'Please enter a valid 10-digit contact number.');
+      return;
+    }
+    // Address validation (at least 10 characters)
+    if (address.length < 1) {
+      Alert.alert('Validation Error', 'Please enter a valid address .');
+      return;
+    }
+    // Area validation (must be selected)
+    if (!area) {
+      Alert.alert('Validation Error', 'Please select an area.');
+      return;
+    }
+    // Loan type validation (must be selected)
+    if (!loanType) {
+      Alert.alert('Validation Error', 'Please select a loan type.');  
+      return;
+    }
+    // Start loading state
+    console.log('Starting registration process...');
+    console.log('NIC:', nic);
+    console.log('Contact:', contact);
+    console.log('Address:', address); 
+    console.log('Loan Type:', loanType);
+    console.log('Area:', area);
+    console.log('Image URI:', image); 
+    console.log('Name:', name);
+    console.log('Validating input fields...');
+    // Set loading state to true
+    console.log('Setting loading state to true...');
+    console.log('Starting registration process...'    );
+    console.log('Validating input fields...');
+    console.log('Setting loading state to true...');
 
     setIsLoading(true);
 
@@ -62,7 +105,7 @@ export default function RegisterScreen() {
         address,
         loanType,
         area,
-        status:'pending',
+        status: 'pending',
         customerPicture: imageUrl,
         createdAt: new Date(),
       });
@@ -96,16 +139,16 @@ export default function RegisterScreen() {
         }));
         setLoanTypeOptions(loanTypes);
 
-        const areaSnapshot = await getDocs(collection(db, 'employees'));
+        const areaSnapshot = await getDocs(collection(db, 'customers'));
         const areas = areaSnapshot.docs
           .map(doc => {
             const areaVal = doc.data().area;
             return areaVal
               ? {
-                  label: areaVal,
-                  value: areaVal,
-                  key: doc.id,
-                }
+                label: areaVal,
+                value: areaVal,
+                key: doc.id,
+              }
               : null;
           })
           .filter((item): item is { label: string; value: string; key: string } => item !== null);
@@ -230,7 +273,7 @@ export default function RegisterScreen() {
 
 
 
-               <View className='mt-4'>
+              <View className='mt-4'>
                 <Text className="text-gray-700 font-semibold">Address</Text>
                 <TextInput
                   placeholder="Enter your complete address"
@@ -245,7 +288,7 @@ export default function RegisterScreen() {
 
 
 
-               <View className="mt-4">
+              <View className="mt-4">
                 <Text className="text-gray-700 font-semibold mb-1 ml-1"> Area</Text>
                 <View className="border border-gray-500 rounded-2xl">
                   <RNPickerSelect
