@@ -838,7 +838,11 @@ private customersCollectionName = 'customers';
                 <>
                   <View className="bg-red-50 p-4 rounded-lg mb-4 border-l-4 border-red-500">
                     <Text className="text-red-700 font-bold">⚠️ Alert: {notPaidAllWeek.length} customers need immediate attention</Text>
+<<<<<<< HEAD
                     <Text className="text-red-600 text-sm mt-1">These customers havent paid for any day this week.</Text>
+=======
+                    <Text className="text-red-600 text-sm mt-1">These customers haven't paid for any day this week.</Text>
+>>>>>>> 6ac60dd0a4635dbc60c9298eba4f3a4c65b1e211
                   </View>
                   
                   {notPaidAllWeek.map((customer, index) => (
