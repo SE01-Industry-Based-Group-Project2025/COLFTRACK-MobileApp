@@ -32,10 +32,6 @@ interface SearchState {
       thursday: 'paid' | 'unpaid';
       friday: 'paid' | 'unpaid';
     };
-<<<<<<< HEAD
-=======
-    status: 'pending' | 'approve'; // <-- add status
->>>>>>> origin/rashmikadhanushan
   } | null;
   isSearching: boolean;
   showNotPaidList: boolean;
@@ -121,10 +117,6 @@ private customersCollectionName = 'customers';
           profilePhoto: customerData.customerPicture || 'https://via.placeholder.com/100x100/4A90E2/FFFFFF?text=PN',
           balance: balance,
           weeklyPayments: typedPaymentData,
-<<<<<<< HEAD
-=======
-          status: customerData.status || 'Unknown', // <-- add status
->>>>>>> origin/rashmikadhanushan
         };
 
         this.setState({
@@ -191,10 +183,6 @@ private customersCollectionName = 'customers';
         profilePhoto: foundCustomer.customerPicture || 'https://via.placeholder.com/100x100/4A90E2/FFFFFF?text=PN',
         balance: balance,
         weeklyPayments: typedPaymentData,
-<<<<<<< HEAD
-=======
-        status: foundCustomer.status || 'Unknown', // <-- add status
->>>>>>> origin/rashmikadhanushan
       };
 
       this.setState({
@@ -850,15 +838,7 @@ private customersCollectionName = 'customers';
                 <>
                   <View className="bg-red-50 p-4 rounded-lg mb-4 border-l-4 border-red-500">
                     <Text className="text-red-700 font-bold">⚠️ Alert: {notPaidAllWeek.length} customers need immediate attention</Text>
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <Text className="text-red-600 text-sm mt-1">These customers havent paid for any day this week.</Text>
-=======
-                    <Text className="text-red-600 text-sm mt-1">These customers haven't paid for any day this week.</Text>
->>>>>>> 6ac60dd0a4635dbc60c9298eba4f3a4c65b1e211
-=======
-                    <Text className="text-red-600 text-sm mt-1">These customers haven't paid for any day this week.</Text>
->>>>>>> origin/rashmikadhanushan
                   </View>
                   
                   {notPaidAllWeek.map((customer, index) => (
@@ -886,12 +866,7 @@ private customersCollectionName = 'customers';
               )}
             </View>
           ) : (
-<<<<<<< HEAD
            <>   {/* Search Section */}
-=======
-            <View>
-              {/* Search Section */}
->>>>>>> origin/rashmikadhanushan
               <View className="bg-white rounded-lg p-5 mb-5 shadow-md">
                 <Text className="text-lg font-bold mb-4 text-gray-800">Customer Search</Text>
                 <View className="flex-row items-center border border-gray-300 rounded-lg bg-gray-100 mb-4">
@@ -930,28 +905,18 @@ private customersCollectionName = 'customers';
 
               {/* Search Results */}
               {searchResult && (
-<<<<<<< HEAD
                 <>
                   {/* Profile Section */}
                   <View className="bg-white rounded-lg p-5 mb-5 shadow-md">
                     <Text className="text-lg font-bold mb-4 text-gray-800">Customer Details</Text>
                     
-=======
-                <View>
-                  {/* Profile Section */}
-                  <View className="bg-white rounded-lg p-5 mb-5 shadow-md">
-                    <Text className="text-lg font-bold mb-4 text-gray-800">Customer Details</Text>
->>>>>>> origin/rashmikadhanushan
                     <View className="items-center mb-5">
                       <Image
                         source={{ uri: searchResult.profilePhoto }}
                         className="w-24 h-24 rounded-full border-4 border-blue-700"
                       />
                     </View>
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/rashmikadhanushan
                     <View className="space-y-3">
                       <View className="flex-row justify-between items-center py-2 border-b border-gray-200">
                         <Text className="text-base font-bold text-gray-600">ID:</Text>
@@ -969,16 +934,7 @@ private customersCollectionName = 'customers';
                         <Text className="text-base font-bold text-gray-600">Address:</Text>
                         <Text className="text-base font-bold text-gray-800">{searchResult.address || 'No Address'}</Text>
                       </View>
-<<<<<<< HEAD
                       
-=======
-                      <View className="flex-row justify-between items-center py-2 border-b border-gray-200">
-                        <Text className="text-base font-bold text-gray-600">Status:</Text>
-                        <Text className={`text-base font-bold ${searchResult.status === 'approve' ? 'text-green-600' : 'text-yellow-600'}`}>
-                          {searchResult.status ? searchResult.status.charAt(0).toUpperCase() + searchResult.status.slice(1) : 'Unknown'}
-                        </Text>
-                      </View>
->>>>>>> origin/rashmikadhanushan
                     </View>
                   </View>
 
@@ -991,7 +947,6 @@ private customersCollectionName = 'customers';
                     
                     <View className="space-y-3 mb-2">
                       {Object.entries(searchResult.weeklyPayments).map(([day, status]) => (
-<<<<<<< HEAD
                         <TouchableOpacity
                           key={day}
                           className={`flex-row items-center justify-between p-4 rounded-lg border-2  mb-5 relative ${status === 'paid' ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'} ${day === currentDay ? 'border-3 border-blue-500 bg-blue-100' : ''}`}
@@ -1004,15 +959,6 @@ private customersCollectionName = 'customers';
                           <View className="flex-1">
                             <Text className="text-base font-bold text-gray-800">{this.getDayName(day) || day}</Text>
                             <Text className="text-xs text-gray-500">Tap to toggle status</Text>
-=======
-                        <View
-                          key={day}
-                          className={`flex-row items-center justify-between p-4 rounded-lg border-2 mb-5 relative ${status === 'paid' ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500'} ${day === currentDay ? 'border-3 border-blue-500 bg-blue-100' : ''}`}
-                        >
-                          <View className="flex-1">
-                            <Text className="text-base font-bold text-gray-800">{this.getDayName(day) || day}</Text>
-                            <Text className="text-xs text-gray-500">Payment Status</Text>
->>>>>>> origin/rashmikadhanushan
                           </View>
                           <View className="flex-row items-center space-x-2">
                             <Ionicons
@@ -1023,33 +969,20 @@ private customersCollectionName = 'customers';
                             <Text className={`text-sm font-bold ${status === 'paid' ? 'text-green-500' : 'text-red-500'}`}>
                               {status.toUpperCase()}
                             </Text>
-<<<<<<< HEAD
                             <Ionicons name="chevron-forward" size={16} color="#666" />
-=======
->>>>>>> origin/rashmikadhanushan
                           </View>
                           {day === currentDay && (
                             <View className="absolute top-[-8px] right-[-8px] bg-blue-500 px-2 py-1 rounded-full">
                               <Text className="text-white text-xs font-bold">TODAY</Text>
                             </View>
                           )}
-<<<<<<< HEAD
                         </TouchableOpacity>
-=======
-                        </View>
->>>>>>> origin/rashmikadhanushan
                       ))}
                     </View>
 
                     {/* Summary */}
                     <View className="mt-5 p-4 bg-gray-100 rounded-lg">
                       <Text className="text-base font-bold text-gray-800 mb-2">Payment Summary</Text>
-<<<<<<< HEAD
-=======
-                      <Text className="text-xs text-blue-600 mb-2">
-                        Total Balance amount comes from the <Text className="font-bold">accounts</Text> database
-                      </Text>
->>>>>>> origin/rashmikadhanushan
                       <View className="flex-row justify-between items-center mb-1">
                         <Text className="text-sm text-gray-600">Paid Days:</Text>
                         <Text className="text-sm font-bold text-green-500">
@@ -1097,15 +1030,9 @@ private customersCollectionName = 'customers';
                       </>
                     )}
                   </TouchableOpacity>
-<<<<<<< HEAD
                 </>
               )}
             </>
-=======
-                </View>
-              )}
-            </View>
->>>>>>> origin/rashmikadhanushan
           )}
         </View>
       </ScrollView>
